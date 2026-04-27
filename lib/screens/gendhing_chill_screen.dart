@@ -76,7 +76,6 @@ class _GendingChillScreenState extends State<GendingChillScreen>
 
   static const _orange = Color(0xFFFF8121);
   static const _cardBg = Color(0xFFD9D9D9);
-  static const _darkBg = Color(0xFF13324E);
 
   @override
   void initState() {
@@ -222,8 +221,14 @@ class _GendingChillScreenState extends State<GendingChillScreen>
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryTextColor =
+        isDark ? Colors.white : const Color(0xFF13324E);
+    final secondaryTextColor =
+        isDark ? Colors.white70 : const Color(0xB313324E);
+
     return Scaffold(
-      backgroundColor: _darkBg,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -248,20 +253,20 @@ class _GendingChillScreenState extends State<GendingChillScreen>
                       children: [
                         const SizedBox(height: 8),
                         // Page title
-                        const Text(
+                        Text(
                           'Gendhing Chill',
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w700,
-                            color: Colors.white,
+                            color: primaryTextColor,
                           ),
                         ),
                         const SizedBox(height: 4),
-                        const Text(
+                        Text(
                           'Dengarkan audio lantunan khas Jawa tradisional',
                           style: TextStyle(
                             fontSize: 13,
-                            color: Colors.white70,
+                            color: secondaryTextColor,
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -295,24 +300,28 @@ class _GendingChillScreenState extends State<GendingChillScreen>
   // ── Top Bar ───────────────────────────────────────────────────────────────
 
   Widget _buildTopBar(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryTextColor =
+        isDark ? Colors.white : const Color(0xFF13324E);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Row(
         children: [
           GestureDetector(
             onTap: () => Navigator.maybePop(context),
-            child: const Icon(Icons.arrow_back, color: Colors.white, size: 24),
+            child: Icon(Icons.arrow_back, color: primaryTextColor, size: 24),
           ),
           const Spacer(),
           RichText(
-            text: const TextSpan(
+            text: TextSpan(
               children: [
                 TextSpan(
                   text: 'Iso',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w700,
-                    color: Colors.white,
+                    color: primaryTextColor,
                   ),
                 ),
                 TextSpan(

@@ -416,8 +416,12 @@ class _AutoAlusScreenState extends State<AutoAlusScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryTextColor =
+        isDark ? Colors.white : const Color(0xFF13324E);
+
     return Scaffold(
-      backgroundColor: const Color(0xFF13324E),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -444,14 +448,14 @@ class _AutoAlusScreenState extends State<AutoAlusScreen> {
                     children: [
                       GestureDetector(
                         onTap: () => Navigator.pop(context),
-                        child: const Icon(
+                        child: Icon(
                           Icons.arrow_back,
-                          color: Colors.white,
+                          color: primaryTextColor,
                           size: 24,
                         ),
                       ),
                       RichText(
-                        text: const TextSpan(
+                        text: TextSpan(
                           children: [
                             TextSpan(
                               text: 'Iso',
@@ -459,7 +463,7 @@ class _AutoAlusScreenState extends State<AutoAlusScreen> {
                                 fontFamily: 'Noto Sans Javanese',
                                 fontSize: 24,
                                 fontWeight: FontWeight.w700,
-                                color: Colors.white,
+                                color: primaryTextColor,
                               ),
                             ),
                             TextSpan(
@@ -487,7 +491,7 @@ class _AutoAlusScreenState extends State<AutoAlusScreen> {
                       children: [
                         // Page title
                         RichText(
-                          text: const TextSpan(
+                          text: TextSpan(
                             children: [
                               TextSpan(
                                 text: 'Auto',
@@ -504,7 +508,7 @@ class _AutoAlusScreenState extends State<AutoAlusScreen> {
                                   fontFamily: 'Noto Sans Javanese',
                                   fontSize: 24,
                                   fontWeight: FontWeight.w700,
-                                  color: Colors.white,
+                                  color: primaryTextColor,
                                 ),
                               ),
                             ],
@@ -513,12 +517,12 @@ class _AutoAlusScreenState extends State<AutoAlusScreen> {
                         const SizedBox(height: 6),
 
                         // Subtitle
-                        const Text(
+                        Text(
                           'Gak perlu takut kualat pas ngomong sama wong tuo. Ketik Ngoko, langsung dadi Krama Alus!',
                           style: TextStyle(
                             fontFamily: 'Noto Sans Javanese',
                             fontSize: 13,
-                            color: Colors.white,
+                            color: primaryTextColor,
                             height: 1.8,
                           ),
                         ),

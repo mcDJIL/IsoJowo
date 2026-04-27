@@ -78,20 +78,24 @@ class _AksaraLabScreenState extends State<AksaraLabScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryTextColor =
+        isDark ? Colors.white : const Color(0xFF13324E);
+
     return Scaffold(
-      backgroundColor: const Color(0xFF13324E),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       bottomNavigationBar: const _BottomNavBar(),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(color: primaryTextColor),
         title: RichText(
-          text: const TextSpan(
+          text: TextSpan(
             children: [
               TextSpan(
                 text: 'Iso',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: primaryTextColor,
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
                 ),
@@ -128,7 +132,7 @@ class _AksaraLabScreenState extends State<AksaraLabScreen> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 4, 20, 2),
                   child: RichText(
-                    text: const TextSpan(
+                      text: TextSpan(
                       children: [
                         TextSpan(
                           text: 'Aksara',
@@ -141,7 +145,7 @@ class _AksaraLabScreenState extends State<AksaraLabScreen> {
                         TextSpan(
                           text: ' Lab',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: primaryTextColor,
                             fontSize: 26,
                             fontWeight: FontWeight.w700,
                           ),
@@ -151,12 +155,12 @@ class _AksaraLabScreenState extends State<AksaraLabScreen> {
                   ),
                 ),
                 // Subtitle
-                const Padding(
+                Padding(
                   padding: EdgeInsets.fromLTRB(20, 0, 20, 12),
                   child: Text(
                     'Pilih aksara sing arep mbok sinaoni. Terus jajal tulis neng kanvas sebelah ngisor kuwi ya!',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: primaryTextColor,
                       fontSize: 13,
                       height: 1.5,
                     ),

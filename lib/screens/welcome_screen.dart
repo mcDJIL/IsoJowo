@@ -6,8 +6,12 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryTextColor =
+        isDark ? Colors.white : const Color(0xFF13324E);
+
     return Scaffold(
-      backgroundColor: const Color(0xFF13324E),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -26,14 +30,14 @@ class WelcomeScreen extends StatelessWidget {
                 const Spacer(),
                 // Title: IsoJowo
                 RichText(
-                  text: const TextSpan(
+                  text: TextSpan(
                     children: [
                       TextSpan(
                         text: 'Iso',
                         style: TextStyle(
                           fontSize: 58,
                           fontWeight: FontWeight.w700,
-                          color: Colors.white,
+                          color: primaryTextColor,
                         ),
                       ),
                       TextSpan(
@@ -54,8 +58,8 @@ class WelcomeScreen extends StatelessWidget {
                   child: Text(
                     'Belajar Bahasa Jawa cara Gen Z. Mulai dari nol sampai jadi master tata krama, kabeh ono neng kene!',
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Colors.white,
+                    style: TextStyle(
+                      color: primaryTextColor,
                       fontSize: 12,
                       fontWeight: FontWeight.w700,
                       letterSpacing: -0.6,

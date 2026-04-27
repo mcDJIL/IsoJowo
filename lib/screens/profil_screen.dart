@@ -5,6 +5,10 @@ class ProfilScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryTextColor =
+        isDark ? const Color(0xFFEBDECE) : const Color(0xFF13324E);
+
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -28,12 +32,12 @@ class ProfilScreen extends StatelessWidget {
                 const SizedBox(height: 18),
 
                 // ── Name ──
-                const Text(
+                Text(
                   'Mahesa Jenar',
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.w700,
-                    color: Color(0xFFEBDECE),
+                    color: primaryTextColor,
                     letterSpacing: -1.6,
                     shadows: [
                       Shadow(color: Colors.black, blurRadius: 2),
@@ -123,17 +127,24 @@ class _ProfileAvatar extends StatelessWidget {
 class _LevelBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryTextColor =
+        isDark ? Colors.white : const Color(0xFF13324E);
+    final trackColor = isDark
+        ? Colors.white.withValues(alpha: 0.30)
+        : const Color(0x3313324E);
+
     return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children: [
             Text(
               'Level 5',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
-                color: Colors.white,
+                color: primaryTextColor,
               ),
             ),
             Text(
@@ -141,7 +152,7 @@ class _LevelBar extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
-                color: Colors.white,
+                color: primaryTextColor,
               ),
             ),
           ],
@@ -153,7 +164,7 @@ class _LevelBar extends StatelessWidget {
             Container(
               height: 5,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.30),
+                color: trackColor,
                 borderRadius: BorderRadius.circular(26),
               ),
             ),
@@ -340,16 +351,20 @@ class _AchievementsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final sectionTextColor =
+        isDark ? const Color(0xFFF3EDE7) : const Color(0xFF13324E);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Section title
-        const Text(
+        Text(
           'Lencana Pencapaian',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w700,
-            color: Color(0xFFF3EDE7),
+            color: sectionTextColor,
             letterSpacing: -1.0,
             shadows: [Shadow(color: Colors.black, blurRadius: 2)],
           ),
@@ -381,6 +396,10 @@ class _BadgeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final badgeTextColor =
+        isDark ? const Color(0xFFF3EDE7) : const Color(0xFF13324E);
+
     return Column(
       children: [
         Container(
@@ -415,10 +434,10 @@ class _BadgeWidget extends StatelessWidget {
         Text(
           badge.label,
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
-            color: Color(0xFFF3EDE7),
+            color: badgeTextColor,
             letterSpacing: -0.28,
             height: 1.3,
           ),

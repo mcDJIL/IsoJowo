@@ -268,8 +268,14 @@ class _PepakBattleScreenState extends State<PepakBattleScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryTextColor =
+        isDark ? Colors.white : const Color(0xFF13324E);
+    final secondaryTextColor =
+        isDark ? Colors.white70 : const Color(0xB313324E);
+
     return Scaffold(
-      backgroundColor: const Color(0xFF13324E),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       bottomNavigationBar: _PepakBottomNavBar(onHome: () => Navigator.pop(context)),
       body: Stack(
         fit: StackFit.expand,
@@ -295,17 +301,17 @@ class _PepakBattleScreenState extends State<PepakBattleScreen> {
                     children: [
                       GestureDetector(
                         onTap: () => Navigator.pop(context),
-                        child: const Icon(Icons.arrow_back,
-                            color: Colors.white, size: 24),
+                        child: Icon(Icons.arrow_back,
+                            color: primaryTextColor, size: 24),
                       ),
                       RichText(
-                        text: const TextSpan(children: [
+                        text: TextSpan(children: [
                           TextSpan(
                               text: 'Iso',
                               style: TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.w700,
-                                  color: Colors.white)),
+                                  color: primaryTextColor)),
                           TextSpan(
                               text: 'Jowo',
                               style: TextStyle(
@@ -325,7 +331,7 @@ class _PepakBattleScreenState extends State<PepakBattleScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       RichText(
-                        text: const TextSpan(children: [
+                        text: TextSpan(children: [
                           TextSpan(
                               text: 'Pepak ',
                               style: TextStyle(
@@ -337,14 +343,14 @@ class _PepakBattleScreenState extends State<PepakBattleScreen> {
                               style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.w700,
-                                  color: Colors.white)),
+                                  color: primaryTextColor)),
                         ]),
                       ),
                       const SizedBox(height: 4),
-                      const Text(
+                      Text(
                         'Siapkan, strategikamu. Tentukan level tantangan dan\ntipe soal yang mau kamu taklukkan!',
                         style: TextStyle(
-                            fontSize: 12, color: Colors.white70, height: 1.5),
+                            fontSize: 12, color: secondaryTextColor, height: 1.5),
                       ),
                     ],
                   ),

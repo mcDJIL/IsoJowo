@@ -228,8 +228,12 @@ class _NjawiLookScreenState extends State<NjawiLookScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryTextColor =
+        isDark ? Colors.white : const Color(0xFF13324E);
+
     return Scaffold(
-      backgroundColor: const Color(0xFF13324E),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -256,21 +260,21 @@ class _NjawiLookScreenState extends State<NjawiLookScreen> {
                     children: [
                       GestureDetector(
                         onTap: () => Navigator.pop(context),
-                        child: const Icon(
+                        child: Icon(
                           Icons.arrow_back,
-                          color: Colors.white,
+                          color: primaryTextColor,
                           size: 24,
                         ),
                       ),
                       RichText(
-                        text: const TextSpan(
+                        text: TextSpan(
                           children: [
                             TextSpan(
                               text: 'Iso',
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w700,
-                                color: Colors.white,
+                                color: primaryTextColor,
                               ),
                             ),
                             TextSpan(
@@ -296,22 +300,22 @@ class _NjawiLookScreenState extends State<NjawiLookScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // Title
-                        const Text(
+                        Text(
                           'Njawi Look',
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w700,
-                            color: Colors.white,
+                            color: primaryTextColor,
                           ),
                         ),
                         const SizedBox(height: 6),
 
                         // Subtitle
-                        const Text(
+                        Text(
                           'Upload fotomu dan biarkan AI yang merubah foto kamu jadi nuansa Jawa paling otentik.',
                           style: TextStyle(
                             fontSize: 13,
-                            color: Colors.white,
+                            color: primaryTextColor,
                             height: 1.8,
                           ),
                         ),

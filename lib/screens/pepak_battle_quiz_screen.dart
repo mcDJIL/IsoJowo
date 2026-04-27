@@ -228,9 +228,12 @@ class _PepakBattleQuizScreenState extends State<PepakBattleQuizScreen>
   Widget _buildQuiz(BuildContext context) {
     final q = _questions[_currentIndex];
     final progress = (_currentIndex + 1) / _questions.length;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryTextColor =
+        isDark ? Colors.white : const Color(0xFF13324E);
 
     return Scaffold(
-      backgroundColor: const Color(0xFF13324E),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -255,17 +258,17 @@ class _PepakBattleQuizScreenState extends State<PepakBattleQuizScreen>
                     children: [
                       GestureDetector(
                         onTap: _showExitDialog,
-                        child: const Icon(Icons.arrow_back,
-                            color: Colors.white, size: 24),
+                        child: Icon(Icons.arrow_back,
+                            color: primaryTextColor, size: 24),
                       ),
                       RichText(
-                        text: const TextSpan(children: [
+                        text: TextSpan(children: [
                           TextSpan(
                             text: 'Iso',
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w700,
-                              color: Colors.white,
+                              color: primaryTextColor,
                             ),
                           ),
                           TextSpan(
@@ -289,7 +292,7 @@ class _PepakBattleQuizScreenState extends State<PepakBattleQuizScreen>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       RichText(
-                        text: const TextSpan(children: [
+                        text: TextSpan(children: [
                           TextSpan(
                             text: 'Pepak ',
                             style: TextStyle(
@@ -303,16 +306,16 @@ class _PepakBattleQuizScreenState extends State<PepakBattleQuizScreen>
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w700,
-                              color: Colors.white,
+                              color: primaryTextColor,
                             ),
                           ),
                         ]),
                       ),
                       const SizedBox(height: 4),
-                      const Text(
+                      Text(
                         'Buktikan kalau kamu jagoan bahasa Jawa!\nNgoko, Krama, Krama Inggil - Semua bakal diuji disini.',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: primaryTextColor,
                           fontSize: 13,
                           height: 1.6,
                         ),
@@ -596,6 +599,9 @@ class _PepakBattleQuizScreenState extends State<PepakBattleQuizScreen>
   Widget _buildResult(BuildContext context) {
     final total = _questions.length;
     final percentage = total > 0 ? (_score / total * 100).round() : 0;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryTextColor =
+        isDark ? Colors.white : const Color(0xFF13324E);
 
     String message;
     if (percentage >= 90) {
@@ -611,7 +617,7 @@ class _PepakBattleQuizScreenState extends State<PepakBattleQuizScreen>
     }
 
     return Scaffold(
-      backgroundColor: const Color(0xFF13324E),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -638,17 +644,17 @@ class _PepakBattleQuizScreenState extends State<PepakBattleQuizScreen>
                       children: [
                         GestureDetector(
                           onTap: () => Navigator.pop(context),
-                          child: const Icon(Icons.arrow_back,
-                              color: Colors.white, size: 24),
+                          child: Icon(Icons.arrow_back,
+                              color: primaryTextColor, size: 24),
                         ),
                         RichText(
-                          text: const TextSpan(children: [
+                          text: TextSpan(children: [
                             TextSpan(
                               text: 'Iso',
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w700,
-                                color: Colors.white,
+                                color: primaryTextColor,
                               ),
                             ),
                             TextSpan(
@@ -672,7 +678,7 @@ class _PepakBattleQuizScreenState extends State<PepakBattleQuizScreen>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         RichText(
-                          text: const TextSpan(children: [
+                          text: TextSpan(children: [
                             TextSpan(
                               text: 'Pepak ',
                               style: TextStyle(
@@ -686,16 +692,16 @@ class _PepakBattleQuizScreenState extends State<PepakBattleQuizScreen>
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w700,
-                                color: Colors.white,
+                                color: primaryTextColor,
                               ),
                             ),
                           ]),
                         ),
                         const SizedBox(height: 4),
-                        const Text(
+                        Text(
                           'Buktikan kalau kamu jagoan bahasa Jawa!\nNgoko, Krama, Krama Inggil - Semua bakal diuji disini.',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: primaryTextColor,
                             fontSize: 13,
                             height: 1.6,
                           ),

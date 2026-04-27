@@ -242,9 +242,14 @@ class _FlashJowoScreenState extends State<FlashJowoScreen> {
   @override
   Widget build(BuildContext context) {
     final card = _flashCards[_currentIndex];
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryTextColor =
+        isDark ? Colors.white : const Color(0xFF13324E);
+    final secondaryTextColor =
+        isDark ? Colors.white70 : const Color(0xB313324E);
 
     return Scaffold(
-      backgroundColor: const Color(0xFF13324E),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       bottomNavigationBar: const _BottomNavBar(),
       body: Stack(
         fit: StackFit.expand,
@@ -273,22 +278,22 @@ class _FlashJowoScreenState extends State<FlashJowoScreen> {
                       // Back button
                       GestureDetector(
                         onTap: () => Navigator.pop(context),
-                        child: const Icon(
+                        child: Icon(
                           Icons.arrow_back,
-                          color: Colors.white,
+                          color: primaryTextColor,
                           size: 24,
                         ),
                       ),
                       // Logo
                       RichText(
-                        text: const TextSpan(
+                        text: TextSpan(
                           children: [
                             TextSpan(
                               text: 'Iso',
                               style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w700,
-                                color: Colors.white,
+                                color: primaryTextColor,
                               ),
                             ),
                             TextSpan(
@@ -313,7 +318,7 @@ class _FlashJowoScreenState extends State<FlashJowoScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       RichText(
-                        text: const TextSpan(
+                        text: TextSpan(
                           children: [
                             TextSpan(
                               text: 'Flash ',
@@ -328,18 +333,18 @@ class _FlashJowoScreenState extends State<FlashJowoScreen> {
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w700,
-                                color: Colors.white,
+                                color: primaryTextColor,
                               ),
                             ),
                           ],
                         ),
                       ),
                       const SizedBox(height: 4),
-                      const Text(
+                      Text(
                         'Tes kemampuan kosakata Jawamu. Klik suara di kartu untuk melihat jawaban.',
                         style: TextStyle(
                           fontSize: 13,
-                          color: Colors.white70,
+                          color: secondaryTextColor,
                           height: 1.5,
                         ),
                       ),

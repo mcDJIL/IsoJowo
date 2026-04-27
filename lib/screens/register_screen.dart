@@ -24,8 +24,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryTextColor =
+        isDark ? Colors.white : const Color(0xFF13324E);
+
     return Scaffold(
-      backgroundColor: const Color(0xFF13324E),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -46,14 +50,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                   // Logo IsoJowo
                   RichText(
-                    text: const TextSpan(
+                    text: TextSpan(
                       children: [
                         TextSpan(
                           text: 'Iso',
                           style: TextStyle(
                             fontSize: 58,
                             fontWeight: FontWeight.w700,
-                            color: Colors.white,
+                            color: primaryTextColor,
                           ),
                         ),
                         TextSpan(
@@ -71,11 +75,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(height: 60),
 
                   // Judul halaman
-                  const Text(
+                  Text(
                     'Gawe Akun Anyar',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: primaryTextColor,
                       fontSize: 32,
                       fontWeight: FontWeight.w700,
                       letterSpacing: -1.6,
@@ -85,11 +89,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(height: 10),
 
                   // Sub judul
-                  const Text(
+                  Text(
                     'Ayo gabung lan dadi maser tatakrama.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: primaryTextColor,
                       fontSize: 12,
                       fontWeight: FontWeight.w700,
                       letterSpacing: -0.6,
@@ -295,10 +299,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                       children: [
-                        const TextSpan(
+                        TextSpan(
                           text: 'Wis duwe akun? ',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: primaryTextColor,
                             fontSize: 12,
                             fontWeight: FontWeight.w700,
                             letterSpacing: -0.6,

@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF13324E),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Column(
         children: [
           Expanded(
@@ -96,6 +96,10 @@ class _HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryTextColor =
+        isDark ? Colors.white : const Color(0xFF13324E);
+
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -122,14 +126,14 @@ class _HomeBody extends StatelessWidget {
                   children: [
                     // Logo
                     RichText(
-                      text: const TextSpan(
+                      text: TextSpan(
                         children: [
                           TextSpan(
                             text: 'Iso',
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w700,
-                              color: Colors.white,
+                              color: primaryTextColor,
                             ),
                           ),
                           TextSpan(
@@ -151,9 +155,9 @@ class _HomeBody extends StatelessWidget {
                         shape: BoxShape.circle,
                         color: Colors.white24,
                       ),
-                      child: const Icon(
+                      child: Icon(
                         Icons.person_outline_rounded,
-                        color: Colors.white,
+                        color: primaryTextColor,
                         size: 22,
                       ),
                     ),
@@ -213,11 +217,13 @@ class _PlaceholderBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return Center(
       child: Text(
         'Segera Hadir',
         style: TextStyle(
-          color: Colors.white54,
+          color: isDark ? Colors.white54 : const Color(0x8A13324E),
           fontSize: 18,
           fontWeight: FontWeight.w500,
         ),
